@@ -11,17 +11,19 @@ function Pizza(toppings, size) {
 Pizza.prototype.pizzaPrice = function () {
   var price = 5;
 
-  if (this.sizeInput === "medium") {
+  if (this.sizeInput !="small") {
+    if (this.sizeInput === "medium") {
     price += 3;
-  }
-  else if (this.sizeInput === "large") {
-    price += 5;
-  }
-  else if (this.sizeInput === "xl") {
-    price += 7;
-  }
-  else if (this.sizeInput === "jumbo") {
-    price += 10;
+    }
+    else if (this.sizeInput === "large") {
+      price += 5;
+    }
+    else if (this.sizeInput === "xl") {
+      price += 7;
+    }
+    else if (this.sizeInput === "jumbo") {
+      price += 10;
+    }
   }
   if (this.toppingsInput.length != 0) {
     price = price + (this.toppingsInput.length * .75);
@@ -61,47 +63,24 @@ $(document).ready(function() {
 
     var newCustomer = new Customer(inputtedName);
 
-    $(".new-ticket").each(function () {
-      var inputtedAge = $(this).find("input#userAge").val();
-        inputtedAge = parseInt(inputtedAge);
-      var inputtedTime = $(this).find("#time").val();
-      var inputtedMovie = $(this).find("#movie").val();
-      var newTicket = new Ticket (inputtedAge, inputtedTime, inputtedMovie);
-      newCustomer.tickets.push(newTicket);
+    $(".new-pizza").each(function () {
+      var inputtedSize = $(this).find("#size").val();
+      var inputtedToppings = [];
+      //function used to grab values from the form into an array
+      $(this).find("input[name=topping]:checked").each(function() {
+        inputtedToppings.push($(this).val());
+      });
+      //function ends
+      console.log(inputtedToppings);
+      var newPizza = new Pizza (inputtedToppings, inputtedSize);
+      newCustomer.pizza.push(newPizza);
 
-      $("ul").append("<li>" + "Your ticket will cost you: " + "$"  + newTicket.ticketPrice() + "</li>");
-      $("ul").append("<li>" + "Your ticket will cost you: " + "$"  + newTicket.ticketPrice() + "</li>");
+      $("ul").append("<li>" + "Your pizza will cost you: " + "$"  + newPizza.pizzaPrice() + "</li>");
 
-        console.log(newCustomer);
+        console.log(inputtedToppings);
     });
 
 
 
   });
 });
-
-    // if (newTicket.ageInput >= 60 && newTicket.timeInput === "matinee" && newTicket.movieInput === "old-release") {
-    //   var price = 5;
-    //   console.log(price)
-    // } else if (newTicket.ageInput >= 60 && newTicket.timeInput === "matinee" && newTicket.movieInput === "new-release") {
-    //   var price = 9;
-    //   console.log(price);
-    // } else if (newTicket.ageInput >= 60 && newTicket.timeInput === "full-price" && newTicket.movieInput === "new-release") {
-    //   var price = 12;
-    //   console.log(price);
-    // }  else if (newTicket.ageInput >= 60 && newTicket.timeInput === "full-price" && newTicket.movieInput === "old-release") {
-    //   var price = 8;
-    //   console.log(price);
-    // } else if (newTicket.ageInput <= 60 && newTicket.timeInput === "matinee" && newTicket.movieInput === "new-release") {
-    //   var price = 12;
-    //   console.log(price);
-    // } else if (newTicket.ageInput <= 60 && newTicket.timeInput === "matinee" && newTicket.movieInput === "old-release") {
-    //   var price = 8;
-    //   console.log(price);
-    // } else if (newTicket.ageInput <= 60 && newTicket.timeInput === "full-price" && newTicket.movieInput === "new-release") {
-    //   var price = 15;
-    //   console.log(price);
-    // } else if (newTicket.ageInput <= 60 && newTicket.timeInput === "full-price" && newTicket.movieInput === "old-release") {
-    //   var price = 12;
-    //   console.log(price);
-    // }
