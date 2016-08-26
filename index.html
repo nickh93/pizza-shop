@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <script src="js/jquery-1.12.0.js" type="text/javascript"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <title>Nick's Pizza Shop</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1>Nick's Famous Pizza</h1>
+      <form id="userInput">
+        <label for="userName">Please enter your Name: </label>
+        <input id="userName" type="text" class="form-control">
+        <div id="new-pizza">
+          <div class="new-pizza">
+            <label for="movie">Please select a pizza size: </label>
+            <select class="form-control" id="size">
+              <option value="new-release">Small</option>
+              <option value="new-release">Medium</option>
+              <option value="old-release">Large</option>
+              <option value="old-release">Extra large</option>
+              <option value="old-release">Nick's Special Jumbo</option>
+            </select>
+            <label for="toppings">Please select your toppings: </label><br>
+            <input type="checkbox" name="topping" value="cheese">
+            Cheese<br>
+            <input type="checkbox" name="topping" value="pepperni">
+            Pepperoni<br>
+            <input type="checkbox" name="topping" value="mushrooms">
+            Mushrooms<br>
+            <input type="checkbox" name="topping" value="chicken">
+            Chicken<br>
+          </div>
+        </div>
+       <span class="btn btn-primary" id="add-pizza">add another pizza</span>
+       <button type="submit" class="btn btn-info">Go to Checkout</button>
+     </form>
+
+     <ul></ul>
+    </div>
+
+  </body>
+</html>
