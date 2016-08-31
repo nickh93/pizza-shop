@@ -59,6 +59,7 @@ $(document).ready(function() {
   $("form#userInput").submit(function (event) {
     event.preventDefault();
 
+    $("ul#pizza-price").empty();
     var inputtedName = $("input#userName").val();
 
     var newCustomer = new Customer(inputtedName);
@@ -75,7 +76,7 @@ $(document).ready(function() {
       var newPizza = new Pizza (inputtedToppings, inputtedSize);
       newCustomer.pizza.push(newPizza);
 
-      $("ul").append("<li>" + "Your pizza will cost you: " + "$"  + newPizza.pizzaPrice() + "</li>");
+      $("ul#pizza-price").append("<li>" + "Your pizza will cost you: " + "$"  + newPizza.pizzaPrice() + "</li>");
 
         console.log(inputtedToppings);
     });
